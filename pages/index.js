@@ -30,19 +30,18 @@ export default function Home() {
     let hue = color.hsl.h;
 
     if(color.hsl.s > .1) {
-      if(hue < 10 || hue >= 350) { simpleName = "rot" }
-      if(hue >= 10 && hue < 35) { simpleName = "orange" }
-      if(hue >= 35 && hue < 65) { simpleName = "gelb" }
-      if(hue >= 65 && hue < 160) { simpleName = "grün" }
-      if(hue >= 160 && hue < 255) { simpleName = "blau" }
-      if(hue >= 255 && hue < 280) { simpleName = "lila" }
+      if(hue < 19 || hue >= 350) { simpleName = "rot" }
+      if(hue >= 19 && hue < 35) { simpleName = "orange" }
+      if(hue >= 35 && hue < 70) { simpleName = "gelb" }
+      if(hue >= 70 && hue < 166) { simpleName = "grün" }
+      if(hue >= 166 && hue < 263) { simpleName = "blau" }
+      if(hue >= 263 && hue < 280) { simpleName = "lila" }
       if(hue >= 280 && hue < 350) { simpleName = "pink" }
       
-      if(color.hsl.l < .25) { simpleName = `dunkel${simpleName}`; }
+      if(color.hsl.l < .40) { simpleName = `dunkel${simpleName}`; }
       if(color.hsl.l < .10) { simpleName = `schwarz`; }
       if(color.hsl.l > .75) { simpleName = `hell${simpleName}`; }
       if(color.hsl.l > .90) simpleName = "weiß";
-      
     } else {
       if(color.hsl.l < .10) simpleName = "schwarz";
       else if(color.hsl.l < .25) simpleName = "dunkelgrau";
@@ -51,6 +50,7 @@ export default function Home() {
       else simpleName = "weiß";
     }
 
+    simpleName = simpleName.charAt(0).toUpperCase() + simpleName.slice(1);
     setColorName(simpleName);
     setNerdName(c.ntc[0].name);
   };
@@ -117,14 +117,25 @@ export default function Home() {
               Welche Farbe
             </h1>
             <p className='text-center'>
-              Sagt in normalen Worten, wie eine Farbe heißt. 100% wahr.
+              Sagt in normalen Worten, wie eine Farbe heißt (100% wahr). Perfekt
+              für Leute, die nicht an den woken &quot;Königsblau&quot;-Unsinn
+              glauben. 
             </p>
-            <p className='text-center pt-8 text-xl lg:text-2xl font-bold'>
-              Aktuelle Farbe: {colorName}
-            </p>
-            <p className='text-center'>
-              &quot;{nerdName}&quot; 🤓
-            </p>
+            {colorName != "" && nerdName != "" ? (<>
+              <p className='text-center pt-8 text-xl lg:text-2xl font-bold'>
+                Aktuelle Farbe: {colorName}
+              </p>
+              <p className='text-center'>
+                &quot;{nerdName}&quot; 🤓
+              </p>
+            </>) : (<>
+              <p className='text-center pt-8 text-xl lg:text-2xl font-bold select-none opacity-0'>
+                .
+              </p>
+              <p className='text-center select-none opacity-0'>
+                .
+              </p>
+            </>)}
           </div>
           <div className='mx-6 sm:mx-16'>
             <ChromePicker color={ state.color } onChange={ handleChange }/>
@@ -133,21 +144,42 @@ export default function Home() {
           <div className='text-sm lg:text-base p-6 sm:p-0 bg-zinc-900 sm:bg-transparent'>
             <div className='text-zinc-500'>
               Gemacht von {' '}
-              <Link href='https://twitter.com/_223230' className='text-zinc-400'>
-                Luna (@_223230)
+              <Link
+                href='https://twitter.com/_223230'
+                className='text-zinc-400 underline'
+              >
+                Luna
               </Link>
             </div>
             <div className='text-zinc-500'>
               Credit an {' '}
-              <Link href='https://twitter.com/HansGurkenbauer/' target='blank' className='text-zinc-400'>
-                Hans Gurkenbauer (@HansGurkenbauer)
+              <Link
+                href='https://twitter.com/HansGurkenbauer/'
+                target='blank'
+                className='text-zinc-400 underline'
+              >
+                Hans Gurkenbauer
               </Link>
             </div>
             <div className='text-zinc-500'>
-              Gehosted von {' '}
-              <Link href='https://vercel.com' target='blank' className='text-zinc-400'>
-                Vercel
-              </Link> (danke bro)
+              Inspiriert durch {' '}
+              <Link
+                href='https://twitter.com/HansGurkenbauer/status/1651726821761724419'
+                target='blank'
+                className='text-zinc-400 underline'
+              >
+                diesen Tweet
+              </Link>
+            </div>
+            <div className='text-zinc-500'>
+              Quellcode: {' '}
+              <Link
+                href='https://github.com/223230/welche-farbe'
+                target='blank'
+                className='text-zinc-400 underline'
+              >
+                223230/welche-farbe
+              </Link>
             </div>
           </div>
         </div>
