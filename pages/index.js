@@ -2,9 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Inter, Inter_Tight } from 'next/font/google'
-import { useState } from 'react';
-import ColorPicker from '@/components/ColorPicker';
+import { useEffect, useState } from 'react';
 import { ChromePicker } from 'react-color';
+import ColorNamer from 'color-namer';
 
 const inter = Inter({ subsets: ['latin'] })
 const interTight = Inter_Tight({ subsets: ['latin'] })
@@ -20,8 +20,39 @@ export default function Home() {
     },
   });
 
+  const [colorName, setColorName] = useState("");
+  const [nerdName, setNerdName] = useState("");
+
   const handleChange = (color) => {
     setState({...state, color: color.rgb });
+    let c = ColorNamer(color.hex, { pick: ['roygbiv', 'ntc'] });
+    let simpleName = "Poah keine Ahnung";
+    let hue = color.hsl.h;
+
+    if(color.hsl.s > .1) {
+      if(hue < 10 || hue >= 350) { simpleName = "rot" }
+      if(hue >= 10 && hue < 35) { simpleName = "orange" }
+      if(hue >= 35 && hue < 65) { simpleName = "gelb" }
+      if(hue >= 65 && hue < 160) { simpleName = "grün" }
+      if(hue >= 160 && hue < 255) { simpleName = "blau" }
+      if(hue >= 255 && hue < 280) { simpleName = "lila" }
+      if(hue >= 280 && hue < 350) { simpleName = "pink" }
+      
+      if(color.hsl.l < .25) { simpleName = `dunkel${simpleName}`; }
+      if(color.hsl.l < .10) { simpleName = `schwarz`; }
+      if(color.hsl.l > .75) { simpleName = `hell${simpleName}`; }
+      if(color.hsl.l > .90) simpleName = "weiß";
+      
+    } else {
+      if(color.hsl.l < .10) simpleName = "schwarz";
+      else if(color.hsl.l < .25) simpleName = "dunkelgrau";
+      else if(color.hsl.l < .75) simpleName = "grau";
+      else if(color.hsl.l < .90) simpleName = "hellgrau";
+      else simpleName = "weiß";
+    }
+
+    setColorName(simpleName);
+    setNerdName(c.ntc[0].name);
   };
 
   return (
@@ -89,10 +120,10 @@ export default function Home() {
               Sagt in normalen Worten, wie eine Farbe heißt. 100% wahr.
             </p>
             <p className='text-center pt-8 text-xl lg:text-2xl font-bold'>
-              Aktuelle Farbe: NAME
+              Aktuelle Farbe: {colorName}
             </p>
             <p className='text-center'>
-              Nerds würden sagen, es sei NAME
+              &quot;{nerdName}&quot; 🤓
             </p>
           </div>
           <div className='mx-6 sm:mx-16'>
@@ -111,6 +142,12 @@ export default function Home() {
               <Link href='https://twitter.com/HansGurkenbauer/' target='blank' className='text-zinc-400'>
                 Hans Gurkenbauer (@HansGurkenbauer)
               </Link>
+            </div>
+            <div className='text-zinc-500'>
+              Gehosted von {' '}
+              <Link href='https://vercel.com' target='blank' className='text-zinc-400'>
+                Vercel
+              </Link> (danke bro)
             </div>
           </div>
         </div>
