@@ -31,8 +31,8 @@ export default function Home() {
 
     if(color.hsl.s > .1) {
       if(hue < 19 || hue >= 350) { simpleName = "rot" }
-      if(hue >= 19 && hue < 35) { simpleName = "orange" }
-      if(hue >= 35 && hue < 70) { simpleName = "gelb" }
+      if(hue >= 19 && hue < 43) { simpleName = "orange" }
+      if(hue >= 43 && hue < 70) { simpleName = "gelb" }
       if(hue >= 70 && hue < 166) { simpleName = "grün" }
       if(hue >= 166 && hue < 263) { simpleName = "blau" }
       if(hue >= 263 && hue < 280) { simpleName = "lila" }
@@ -62,18 +62,18 @@ export default function Home() {
 
         <title>Welche Farbe</title>
         <meta name="title" content="Welche Farbe"/>
-        <meta name="description" content="Sagt in normalen Worten, wie eine Farbe heißt. Immer zu 100% wahr."/>
+        <meta name="description" content="Sagt in normalen Worten, wie eine Farbe heißt. 100% Farbgarantie."/>
 
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="https://farbe.stxarixdust.tech/"/>
         <meta property="og:title" content="Welche Farbe"/>
-        <meta property="og:description" content="Sagt in normalen Worten, wie eine Farbe heißt. Immer zu 100% wahr."/>
+        <meta property="og:description" content="Sagt in normalen Worten, wie eine Farbe heißt. 100% Farbgarantie."/>
         <meta property="og:image" content="https://farbe.stxarixdust.tech/card-img.png"/>
 
         <meta property="twitter:card" content="summary_large_image"/>
         <meta property="twitter:url" content="https://farbe.stxarixdust.tech/"/>
         <meta property="twitter:title" content="Welche Farbe"/>
-        <meta property="twitter:description" content="Sagt in normalen Worten, wie eine Farbe heißt. Immer zu 100% wahr."/>
+        <meta property="twitter:description" content="Sagt in normalen Worten, wie eine Farbe heißt. 100% Farbgarantie."/>
         <meta property="twitter:image" content="https://farbe.stxarixdust.tech/card-img.png"/>
 
         <link rel="icon" href="/favicon.ico" />
@@ -129,9 +129,7 @@ export default function Home() {
               Welche Farbe
             </h1>
             <p className='text-center'>
-              Sagt in normalen Worten, wie eine Farbe heißt (100% wahr). Perfekt
-              für Leute, die nicht an den woken &quot;Königsblau&quot;-Unsinn
-              glauben. 
+              Sagt in normalen Worten, wie eine Farbe heißt (100% Farbgarantie)
             </p>
             {colorName != "" && nerdName != "" ? (<>
               <p className='text-center pt-8 text-xl lg:text-2xl font-bold'>
