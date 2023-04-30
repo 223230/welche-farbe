@@ -38,7 +38,7 @@ export default function Home() {
       <main className={`
         ${inter.className}
         w-screen
-        h-screen
+        min-h-screen
         flex
         justify-center
         items-center
@@ -89,7 +89,7 @@ export default function Home() {
               Sagt in normalen Worten, wie eine Farbe heißt. 100% wahr.
             </p>
             <p className='text-center pt-8 text-xl lg:text-2xl font-bold'>
-              NAME
+              Aktuelle Farbe: NAME
             </p>
             <p className='text-center'>
               Nerds würden sagen, es sei NAME
@@ -109,7 +109,7 @@ export default function Home() {
             <div className='text-zinc-500'>
               Credit an {' '}
               <Link href='https://twitter.com/HansGurkenbauer/' target='blank' className='text-zinc-400'>
-                Hans Gurkenbauers (@HansGurkenbauer)
+                Hans Gurkenbauer (@HansGurkenbauer)
               </Link>
             </div>
           </div>
