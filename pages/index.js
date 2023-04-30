@@ -58,12 +58,24 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Welche Farbe</title>
-        <meta
-          name="description"
-          content="Sagt in normalen Worten, wie eine Farbe heißt"
-        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Welche Farbe</title>
+        <meta name="title" content="Welche Farbe"/>
+        <meta name="description" content="Sagt in normalen Worten, wie eine Farbe heißt. Immer zu 100% wahr."/>
+
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="https://farbe.stxarixdust.tech/"/>
+        <meta property="og:title" content="Welche Farbe"/>
+        <meta property="og:description" content="Sagt in normalen Worten, wie eine Farbe heißt. Immer zu 100% wahr."/>
+        <meta property="og:image" content="https://farbe.stxarixdust.tech/card-img.png"/>
+
+        <meta property="twitter:card" content="summary_large_image"/>
+        <meta property="twitter:url" content="https://farbe.stxarixdust.tech/"/>
+        <meta property="twitter:title" content="Welche Farbe"/>
+        <meta property="twitter:description" content="Sagt in normalen Worten, wie eine Farbe heißt. Immer zu 100% wahr."/>
+        <meta property="twitter:image" content="https://farbe.stxarixdust.tech/card-img.png"/>
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`
